@@ -20,7 +20,7 @@ def load():
                 line = line.split("=")
                 if len(line) != 2:
                     continue
-                data[line[0].upper()] = line[1]
+                data[line[0].upper()] = line[1][:-1]()
     return data
 
 

@@ -44,7 +44,7 @@ def command(cmd: str):
 
 
 def has_roles(ctx, roles: list):
-    for r in ctx.user.roles:
+    for r in ctx.author.roles:
         if r.name in roles:
             return True
     return False

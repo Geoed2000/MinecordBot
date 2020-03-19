@@ -29,7 +29,6 @@ def bash(bash_command: str):
     """
     # not used for now but can be useful if the bot is running on the same
     # system as the server. sucha as seeing ram usage ect
-    bash_command = "monit status"
 
     process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()

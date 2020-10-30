@@ -165,7 +165,7 @@ async def whois(ctx: commands.Context, user: str):
 
 @client.event
 async def on_raw_reaction_add(payload):
-    guild = client.get_guild(payload.guild_id)
+    guild: discord.Guild = client.get_guild(payload.guild_id)
     channel = guild.get_channel(payload.channel_id)
     message: discord.Message = await channel.fetch_message(payload.message_id)
 
@@ -182,8 +182,11 @@ async def on_raw_reaction_add(payload):
                 if r.emoji == "✅":
                     ids = []
                     for u in await r.users().flatten():
+                        u:discord.User
+                        m:discord.Member
+                        m = await guild.get_member(u.id)
                         ids.append(u.id)
-                        for role in u.roles:
+                        for role in m.roles:
                             if role.name in LEVEL1+LEVEL2:
                                 vote += 100
 
@@ -192,10 +195,14 @@ async def on_raw_reaction_add(payload):
                 if r.emoji == "❌":
                     ids = []
                     for u in await r.users().flatten():
+                        u:discord.User
+                        m:discord.Member
+                        m = await guild.get_member(u.id)
                         ids.append(u.id)
-                        for role in u.roles:
+                        for role in m.roles:
                             if role.name in LEVEL1+LEVEL2:
                                 vote += 100
+                    
                     vote -= len(validated_users(ids))
                     print(str(r.count)+" against")
 

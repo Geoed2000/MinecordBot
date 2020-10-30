@@ -189,7 +189,7 @@ async def on_raw_reaction_add(payload):
                         u:discord.User
                         m:discord.Member
                         print(u.name)
-                        m = guild.fetch_member(str(u.id))
+                        m = await guild.fetch_member(str(u.id))
                         ids.append(u.id)
                         if m:
                             print(LEVEL1+LEVEL2)
@@ -205,7 +205,7 @@ async def on_raw_reaction_add(payload):
                     for u in await r.users().flatten():
                         u:discord.User
                         m:discord.Member
-                        m = guild.fetch_member(u.id)
+                        m = await guild.fetch_member(u.id)
                         ids.append(u.id)
                         if m:
                             for role in m.roles:

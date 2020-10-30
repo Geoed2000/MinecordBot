@@ -149,6 +149,7 @@ async def whois(ctx: commands.Context, user: str):
     ch: discord.TextChannel = ctx.channel
     try:
         player = GetPlayerData(user)
+        player.uuid
     except (Exception):
         await ch.send("Error invalid Username " + user)
         return

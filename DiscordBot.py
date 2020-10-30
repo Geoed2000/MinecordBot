@@ -186,9 +186,10 @@ async def on_raw_reaction_add(payload):
                         m:discord.Member
                         m = guild.get_member(u.id)
                         ids.append(u.id)
-                        for role in m.roles:
-                            if role.name in LEVEL1+LEVEL2:
-                                vote += 100
+                        if m:
+                            for role in m.roles:
+                                if role.name in LEVEL1+LEVEL2:
+                                    vote += 100
 
                     vote += len(validated_users(ids))
                     print(str(r.count)+" for")
@@ -199,9 +200,10 @@ async def on_raw_reaction_add(payload):
                         m:discord.Member
                         m = guild.get_member(u.id)
                         ids.append(u.id)
-                        for role in m.roles:
-                            if role.name in LEVEL1+LEVEL2:
-                                vote += 100
+                        if m:
+                            for role in m.roles:
+                                if role.name in LEVEL1+LEVEL2:
+                                    vote += 100
                     
                     vote -= len(validated_users(ids))
                     print(str(r.count)+" against")

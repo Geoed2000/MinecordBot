@@ -219,7 +219,7 @@ async def on_raw_reaction_add(payload):
                 print(rows)
                 username = rows[0][1]
                 disc_user: discord.User = client.get_user(
-                    int(rows[2]))
+                    int(rows[0][2]))
                 add_to_whitelist(username, disc_user)
                 await channel.send(content="Whitelisted " +
                                    disc_user.mention + " as " + username)

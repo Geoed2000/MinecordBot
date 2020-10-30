@@ -188,6 +188,7 @@ async def on_raw_reaction_add(payload):
                     for u in await r.users().flatten():
                         u:discord.User
                         m:discord.Member
+                        print(u.name)
                         m = guild.get_member(u.id)
                         ids.append(u.id)
                         if m:

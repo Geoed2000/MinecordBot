@@ -131,7 +131,7 @@ async def online(ctx):
                 usage="<@discord_username> <minecraft_username>")
 async def whitelist(ctx: commands.Context, dis_user: discord.User, user: str):
     cursor = db.cursor()
-    sql = ("INSERT INTO requests(message_id,minecraft_username,discord_id)",
+    sql = ("INSERT INTO requests(message_id,minecraft_username,discord_id)"+
            "VALUES(?,?,?)")
     message = await ctx.send("vote on whitelisting of:\n" + user)
     cursor.execute(sql, (message.id, user, dis_user.id))

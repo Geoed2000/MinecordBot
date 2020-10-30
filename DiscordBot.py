@@ -216,6 +216,7 @@ async def on_raw_reaction_add(payload):
                     print(str(r.count)+" against")
 
             if vote >= 3:
+                print(rows)
                 username = rows[0][1]
                 disc_user: discord.User = client.get_user(
                     int(rows[2]))

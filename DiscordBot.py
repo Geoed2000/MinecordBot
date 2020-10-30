@@ -57,7 +57,7 @@ def has_roles(ctx, roles: list):
 
 
 def validated_users(users: list):
-    cursor = db.cursor("")
+    cursor = db.cursor()
     cursor.execute(f"SELECT * FROM users WHERE discord_id IN ?",
                    (users))
     rows = cursor.fetchall()
@@ -69,7 +69,7 @@ def add_to_whitelist(username: str, disc_user: discord.User):
     command("whitelist add " + username)
     sql = "INSERT INTO users(discord_id, minecraft_uuid) VALUES(?,?)"
     uuid = GetPlayerData(username).uuid
-    cursor = db.cursor("")
+    cursor = db.cursor()
     cursor.execute(disc_user.id, uuid)
 
 
@@ -130,7 +130,7 @@ async def online(ctx):
                       " more positive votes are needed then negative",
                 usage="<@discord_username> <minecraft_username>")
 async def whitelist(ctx: commands.Context, dis_user: discord.User, user: str):
-    cursor = db.cursor("")
+    cursor = db.cursor()
     sql = ("INSERT INTO requests(message_id,minecraft_username,discord_id)",
            "VALUES(?,?,?)")
     message = await ctx.send("vote on whitelisting of:\n" + user)
@@ -150,7 +150,7 @@ async def whois(ctx: commands.Context, user: str):
         await ch.send("Error invalid Username " + user)
         return
     
-    cursor = db.cursor("")
+    cursor = db.cursor()
     cursor.execute(f"SELECT * FROM users WHERE minecraft_uuid = ?",
                    (player.uuid))
     rows = cursor.fetchall()
@@ -169,7 +169,7 @@ async def on_raw_reaction_add(payload):
     message: discord.Message = await channel.fetch_message(payload.message_id)
 
     if message.author.bot:  # Verify message was sent by a bot
-        cursor = db.cursor("")
+        cursor = db.cursor()
         cursor.execute(f"SELECT * FROM requests WHERE message_id = ?",
                        (message.id))
         rows = cursor.fetchall()

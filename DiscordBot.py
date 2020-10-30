@@ -189,7 +189,7 @@ async def on_raw_reaction_add(payload):
                         u:discord.User
                         m:discord.Member
                         print(u.name)
-                        m = guild.get_member(u.id)
+                        m = guild.get_member(str(u.id))
                         ids.append(u.id)
                         if m:
                             print(LEVEL1+LEVEL2)

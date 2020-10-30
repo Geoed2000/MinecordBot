@@ -155,7 +155,7 @@ async def whois(ctx: commands.Context, user: str):
     
     cursor = db.cursor()
     cursor.execute(f"SELECT * FROM users WHERE minecraft_uuid = ?",
-                   (str(player.uuid)))
+                   [str(player.uuid)])
     rows = cursor.fetchall()
     cursor.close()
     db.commit()

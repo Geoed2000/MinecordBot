@@ -13,10 +13,10 @@ load_dotenv()
 SERVERADDRESS: str = os.environ["serverAddress"]
 PASSWORD: str = os.environ["password"]
 DISCORDTOKEN: str = os.environ["discordToken"]
-LEVEL1: list(int) = []
+LEVEL1: list = []
 for i in os.environ["level1"].split(","):
     LEVEL1.append(i)
-LEVEL2: list(int) = []
+LEVEL2: list = []
 for i in os.environ["level2"].split(","):
     LEVEL2.append(i)
 
@@ -56,7 +56,7 @@ def has_roles(ctx, roles: list):
     return False
 
 
-def validated_users(users: list(int)):
+def validated_users(users: list):
     cursor = db.cursor("")
     cursor.execute(f"SELECT * FROM users WHERE discord_id IN ?",
                    (users))

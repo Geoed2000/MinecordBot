@@ -169,8 +169,8 @@ async def on_raw_reaction_add(payload):
 
     if message.author.bot:  # Verify message was sent by a bot
         cursor = db.cursor()
-        cursor.execute(f"SELECT * FROM requests WHERE message_id = ?",
-                       (str(message.id)))
+        cursor.execute("SELECT * FROM requests WHERE message_id = ?",
+                       [str(message.id)])
         rows = cursor.fetchall()
         cursor.close()
         if rows:

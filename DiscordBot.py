@@ -128,7 +128,7 @@ async def online(ctx):
 
 @client.command(brief="vote on whitelisting a user when no mods are around 3"
                       " more positive votes are needed then negative",
-                usage="!whitelist <@discord_username> <minecraft_username>")
+                usage="<@discord_username> <minecraft_username>")
 async def whitelist(ctx: commands.Context, dis_user: discord.User, user: str):
     cursor = db.cursor("")
     sql = ("INSERT INTO requests(message_id,minecraft_username,discord_id)",

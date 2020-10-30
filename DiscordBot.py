@@ -58,7 +58,8 @@ def has_roles(ctx, roles: list):
 
 def validated_users(users: list):
     cursor = db.cursor()
-    cursor.execute(f"SELECT * FROM users WHERE discord_id IN ({','.join(['?']*len(users))})")
+    cursor.execute(f"SELECT * FROM users WHERE discord_id IN ({','.join(['?']*len(users))})",
+                   (users))
     rows = cursor.fetchall()
     cursor.close()
     return rows

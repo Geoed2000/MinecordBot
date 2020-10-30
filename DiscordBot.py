@@ -103,7 +103,7 @@ async def say(ctx, cmd):
 @client.command(brief="executes a command in minecraft")
 @commands.check(lambda ctx: has_roles(ctx, LEVEL1))
 async def exec(ctx, cmd):
-    response = command('/'+cmd)
+    response = command(cmd)
     if response != "":
         await ctx.send("```\n"+response+"\n```")
 

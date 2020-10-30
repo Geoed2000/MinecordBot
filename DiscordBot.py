@@ -160,7 +160,7 @@ async def whois(ctx: commands.Context, user: str):
     cursor.close()
     db.commit()
     if rows:
-        disc_user: discord.User = client.fetch_user(int(rows[0][0]))
+        disc_user: discord.User = await client.fetch_user(int(rows[0][0]))
         await ch.send(user + " is " + disc_user.mention)
     else:
         await ch.send(user + " isn't whitelisted on this server")

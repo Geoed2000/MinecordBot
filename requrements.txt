@@ -1,2 +1,4 @@
 mcrcon
 discord
+mcuuid
+sqlite

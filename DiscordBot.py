@@ -10,14 +10,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SERVERADDRESS: str = os.environ("serverAddress")
-PASSWORD: str = os.environ("password")
-DISCORDTOKEN: str = os.environ("discordToken")
+SERVERADDRESS: str = os.environ["serverAddress"]
+PASSWORD: str = os.environ["password"]
+DISCORDTOKEN: str = os.environ["discordToken"]
 LEVEL1: list[int] = []
-for i in os.environ("level1").split(","):
+for i in os.environ["level1"].split(","):
     LEVEL1.append(i)
 LEVEL2: list[int] = []
-for i in os.environ("level2").split(","):
+for i in os.environ["level2"].split(","):
     LEVEL2.append(i)
 
 

@@ -96,13 +96,13 @@ async def status(ctx):
 
 @client.command(brief="sends a message in the minecraft chat")
 @commands.check(lambda ctx: has_roles(ctx, LEVEL1 + LEVEL2))
-async def say(ctx, *, cmd):
+async def say(ctx, cmd):
     command("/say " + ctx.author.name + ": " + cmd)
 
 
 @client.command(brief="executes a command in minecraft")
 @commands.check(lambda ctx: has_roles(ctx, LEVEL1))
-async def exec(ctx, *, cmd):
+async def exec(ctx, cmd):
     response = command('/'+cmd)
     if response != "":
         await ctx.send("```\n"+response+"\n```")
@@ -112,6 +112,7 @@ async def exec(ctx, *, cmd):
 async def online(ctx):
 
     response = command("/list uuids")
+    print (response)
 
     users = response.split(":", 1)
     users = users[1].split(",")

@@ -73,7 +73,7 @@ def add_to_whitelist(username: str, disc_user: discord.User):
     sql = "INSERT INTO users(discord_id, minecraft_uuid) VALUES(?,?)"
     uuid = GetPlayerData(username).uuid
     cursor = db.cursor()
-    cursor.execute(disc_user.id, uuid)
+    cursor.execute(sql, (str(disc_user.id), str(uuid)))
 
 
 @client.command(brief="gets the status of the system the server is "
@@ -155,7 +155,7 @@ async def whois(ctx: commands.Context, user: str):
     
     cursor = db.cursor()
     cursor.execute(f"SELECT * FROM users WHERE minecraft_uuid = ?",
-                   (player.uuid))
+                   (str(player.uuid)))
     rows = cursor.fetchall()
     cursor.close()
     db.commit()

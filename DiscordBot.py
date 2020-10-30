@@ -111,7 +111,7 @@ async def exec(ctx, cmd):
 @client.command(brief="gets a list of all online players on the server")
 async def online(ctx):
 
-    response = command("/list uuids")
+    response = command("list uuids")
     print (response)
 
     users = response.split(":", 1)

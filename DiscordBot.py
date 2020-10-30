@@ -179,7 +179,7 @@ async def on_raw_reaction_add(payload):
                 r: discord.Reaction
                 if r.emoji == "✅":
                     ids = []
-                    for u in r.users:
+                    for u in r.users():
                         ids.append(u.id)
                         for role in u.roles:
                             if role.name in LEVEL1+LEVEL2:
@@ -189,7 +189,7 @@ async def on_raw_reaction_add(payload):
                     print(str(r.count)+" for")
                 if r.emoji == "❌":
                     ids = []
-                    for u in r.users:
+                    for u in r.users():
                         ids.append(u.id)
                         for role in u.roles:
                             if role.name in LEVEL1+LEVEL2:

@@ -216,9 +216,9 @@ async def on_raw_reaction_add(payload):
                     print(str(r.count)+" against")
 
             if vote >= 3:
-                username = rows[0]["minecraft_username"]
+                username = rows[0][1]
                 disc_user: discord.User = client.get_user(
-                    int(rows["discord_id"]))
+                    int(rows[2]))
                 add_to_whitelist(username, disc_user)
                 await channel.send(content="Whitelisted " +
                                    disc_user.mention + " as " + username)

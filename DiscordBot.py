@@ -146,7 +146,7 @@ async def whitelist(ctx: commands.Context, dis_user: discord.User, user: str):
 @client.command(brief="finds who a minecraft user is in discord",
                 usage="!whois <minecraft_username>")
 async def whois(ctx: commands.Context, user: str):
-    ch: discord.TextChannel = ctx.channel()
+    ch: discord.TextChannel = ctx.channel
     try:
         player = GetPlayerData(user)
     except (Exception):

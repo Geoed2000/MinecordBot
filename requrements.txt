@@ -1,4 +1,3 @@
 mcrcon
 discord
 mcuuid
-sqlite3

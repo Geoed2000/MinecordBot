@@ -64,6 +64,7 @@ def validated_users(users: list):
                    (users))
     rows = cursor.fetchall()
     cursor.close()
+    db.commit()
     return rows
 
 
@@ -139,6 +140,7 @@ async def whitelist(ctx: commands.Context, dis_user: discord.User, user: str):
     await message.add_reaction("✅")
     await message.add_reaction("❌")
     cursor.close()
+    db.commit()
 
 
 @client.command(brief="finds who a minecraft user is in discord",
@@ -156,6 +158,7 @@ async def whois(ctx: commands.Context, user: str):
                    (player.uuid))
     rows = cursor.fetchall()
     cursor.close()
+    db.commit()
     if rows:
         disc_user: discord.User = client.get_user(int(rows[0]["discord_id"]))
         await ch.send(user + " is " + disc_user.mention)
@@ -175,6 +178,7 @@ async def on_raw_reaction_add(payload):
                        [str(message.id)])
         rows = cursor.fetchall()
         cursor.close()
+        db.commit()
         if rows:
             vote = 0
             for r in message.reactions:
@@ -187,7 +191,9 @@ async def on_raw_reaction_add(payload):
                         m = guild.get_member(u.id)
                         ids.append(u.id)
                         if m:
+                            print(LEVEL1+LEVEL2)
                             for role in m.roles:
+                                print (role.name)
                                 if role.name in LEVEL1+LEVEL2:
                                     vote += 100
 

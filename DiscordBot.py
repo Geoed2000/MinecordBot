@@ -127,8 +127,7 @@ async def online(ctx):
 
 
 @client.command(brief="vote on whitelisting a user when no mods are around 3"
-                      " more positive votes are needed then negative",
-                usage="<@discord_username> <minecraft_username>")
+                      " more positive votes are 3craft_username>")
 async def whitelist(ctx: commands.Context, dis_user: discord.User, user: str):
     cursor = db.cursor()
     sql = ("INSERT INTO requests(message_id,minecraft_username,discord_id)"+
@@ -171,7 +170,7 @@ async def on_raw_reaction_add(payload):
     if message.author.bot:  # Verify message was sent by a bot
         cursor = db.cursor()
         cursor.execute(f"SELECT * FROM requests WHERE message_id = ?",
-                       (message.id))
+                       (str(message.id)))
         rows = cursor.fetchall()
         cursor.close()
         if rows:

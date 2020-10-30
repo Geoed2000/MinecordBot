@@ -61,7 +61,7 @@ def validated_users(users: list):
     cursor.execute(f"SELECT * FROM users WHERE discord_id IN ({','.join(['?']*len(users))})",
                    (users))
     rows = cursor.fetchall()
-    cursor.close()
+    cursor.close()1
     return rows
 
 
